@@ -5,8 +5,6 @@ import { AiFillEdit as EditIcon } from "react-icons/ai"
 import { Order } from "src/clients/api.client"
 import { theme } from "@/styles/themes/light.theme"
 
-import Image from 'next/image'
-
 import { OrderItemTooltip } from './tooltip'
 import { Avatar, Container, Data, Item, List } from './styles'
 
@@ -30,7 +28,7 @@ export const OrdersList: FC<Props> = (props) => {
                                         type={order.type}
                                     />
                                     <Avatar>
-                                        <Image src={order.avatar!} />
+                                        <img src={order.avatar!} />
                                     </Avatar>
                                     <Data>
                                         <span className='protocol'>{order.protocol}</span>
