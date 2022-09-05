@@ -18,7 +18,7 @@ export const Item = styled.div`
     position: relative; 
 
     &:hover {
-        background-color: gray;
+        background-color: rgba(217, 217, 217, 0.45);
         ${HoverItem} {
             visibility: initial;
         }
