@@ -8,6 +8,6 @@ export const Container = styled.div`
     height: 72px; 
 
     img {
-        height: 75%; 
+        width: 100%; 
     }
 `

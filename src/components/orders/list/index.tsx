@@ -7,6 +7,7 @@ import { theme } from "@/styles/themes/light.theme"
 
 import { OrderItemTooltip } from './tooltip'
 import { Avatar, Container, Data, Item, List } from './styles'
+import Image from 'next/image'
 
 interface Props {
     orders: Order[]
@@ -28,7 +29,7 @@ export const OrdersList: FC<Props> = (props) => {
                                         type={order.type}
                                     />
                                     <Avatar>
-                                        <img src={order.avatar!} />
+                                        <Image width={200} height={200} src={order.avatar!} />
                                     </Avatar>
                                     <Data>
                                         <span className='protocol'>{order.protocol}</span>

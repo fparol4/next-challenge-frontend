@@ -16,7 +16,7 @@ export interface IOrder extends Partial<Order> { }
 const DEFAULT_AVATAR_URL = 'https://gravatar.com/avatar/f6152e4acd50e543936441fc918b2606?s=400&d=robohash&r=x'
 
 const makeClient = () => {
-    const baseurl = `${settings.API_HOST}/orders`
+    const baseurl = `https://next-cart-backend.herokuapp.com/orders`
     const client = axios.create({ baseURL: baseurl })
 
     const getOrders = async (): Promise<Order[]> => {
