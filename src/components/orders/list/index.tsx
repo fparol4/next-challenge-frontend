@@ -5,7 +5,7 @@ import { AiFillEdit as EditIcon } from "react-icons/ai"
 import { Order } from "src/clients/api.client"
 import { theme } from "@/styles/themes/light.theme"
 
-import { format } from 'date-fns'
+import Image from 'next/image'
 
 import { OrderItemTooltip } from './tooltip'
 import { Avatar, Container, Data, Item, List } from './styles'
@@ -22,7 +22,6 @@ export const OrdersList: FC<Props> = (props) => {
             <List>
                 {orders.map((order, index) => {
                     {
-                        console.log(order.entry_date, order.due_date)
                         return (
                             (
                                 <Item key={index}>
@@ -31,7 +30,7 @@ export const OrdersList: FC<Props> = (props) => {
                                         type={order.type}
                                     />
                                     <Avatar>
-                                        <img src={order.avatar} />
+                                        <Image src={order.avatar!} />
                                     </Avatar>
                                     <Data>
                                         <span className='protocol'>{order.protocol}</span>
