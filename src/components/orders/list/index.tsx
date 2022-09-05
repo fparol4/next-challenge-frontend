@@ -22,9 +22,7 @@ export const OrdersList: FC<Props> = (props) => {
             <List>
                 {orders.map((order, index) => {
                     {
-                        const datePattern = 'dd/MM/yyyy'
-                        const entryDate = format(Date.parse(order.entry_date), datePattern)
-                        const dueDate = format(Date.parse(order.entry_date), datePattern)
+                        console.log(order.entry_date, order.due_date)
                         return (
                             (
                                 <Item key={index}>
@@ -37,8 +35,8 @@ export const OrdersList: FC<Props> = (props) => {
                                     </Avatar>
                                     <Data>
                                         <span className='protocol'>{order.protocol}</span>
-                                        <span className='entry_date'>{entryDate}</span>
-                                        <span className='due_date'>{dueDate}</span>
+                                        <span className='entry_date'>{order.entry_date}</span>
+                                        <span className='due_date'>{order.due_date}</span>
                                     </Data>
                                     <Link href={`/orders/update/${order.id}`}>
                                         <EditIcon style={{

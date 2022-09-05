@@ -33,9 +33,13 @@ const makeClient = () => {
 
     const createOrder = async (order: Order): Promise<Order> => {
         order.avatar = DEFAULT_AVATAR_URL
-        const { data: response } = await client.post('', order)
-        const { content } = response
-        return content
+        try {
+            const { data: response } = await client.post('', order)
+            const { content } = response
+            return content
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     const updateOrder = async (id: number, order: IOrder): Promise<boolean> => {
