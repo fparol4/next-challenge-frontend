@@ -20,27 +20,7 @@ const makeClient = () => {
     const getOrders = async (): Promise<Order[]> => {
         const { data: response } = await client.get('')
         const { content: orders } = response
-        const order = {
-            "id": 1,
-            "protocol": "322456",
-            "presentant": "Fernando Santos",
-            "type": "Prenotação",
-            "avatar": "https://gravatar.com/avatar/f6152e4acd50e543936441fc918b2606?s=400&d=robohash&r=x",
-            "entry_date": "2022-01-09",
-            "due_date": "2022-01-09"
-        }
-        return new Array(5).fill(order)
-        return [
-            {
-                "id": 1,
-                "protocol": "322456",
-                "presentant": "Fernando Santos",
-                "type": "Prenotação",
-                "avatar": "https://gravatar.com/avatar/f6152e4acd50e543936441fc918b2606?s=400&d=robohash&r=x",
-                "entry_date": "2022-01-09",
-                "due_date": "2022-01-09"
-            }
-        ]
+        return orders
     }
 
     const getOrderById = async (id: string): Promise<Order> => {
