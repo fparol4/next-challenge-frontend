@@ -14,16 +14,18 @@ import {
 } from '@/clients/api.client'
 
 
-const CreateOrder: FC<{}> = () => {
+const CreateOrder: FC<{ order: Order }> = (props) => {
     const router = useRouter()
+    const { order } = props
+    const { id: orderId } = order;
 
     const onSubmit = async (order: Order) => {
         try {
-            await client.createOrder(order)
-            toast.success('Ordem criada')
-            setTimeout(() => router.push('/'), 500)
+            await client.updateOrder(orderId!, order)
+            toast.success('Ordem atualizada')
+            setTimeout(() => router.push('/'), 1000)
         } catch (error) {
-            toast.error('Erro tentando criar uma nova ordem')
+            toast.error('Erro ao tentar atualizar uma ordem')
             console.log('[order] - error')
         }
     }
@@ -32,9 +34,16 @@ const CreateOrder: FC<{}> = () => {
         <Layout>
             <ToastContainer />
             <PageTitle title='Formulário' subtitle='novos pedidos e edição' />
-            <OrderForm onSubmit={onSubmit} />
+            <OrderForm order={order} onSubmit={onSubmit} />
         </Layout>
     )
 }
+
+export async function getServerSideProps(context: any) {
+    const { query } = context
+    const order = await client.getOrderById(query.id as string)
+    return { props: { order } }
+}
+
 
 export default CreateOrder

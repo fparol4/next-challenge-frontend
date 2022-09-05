@@ -10,7 +10,6 @@ import { DesktopDatePicker, LocalizationProvider as MUILocalizationProvider } fr
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { TextField } from "@mui/material"
 import { Button, EmptyButton } from "@/components/shared/button";
-import Router from 'next/router'
 import Link from "next/link";
 
 export const Form = styled.form`
@@ -97,7 +96,6 @@ interface OrderForm {
 }
 
 interface Form {
-    avatar: string
     protocol: string
     presentant: string
     type: string
@@ -117,11 +115,7 @@ const resolver = yupResolver(schema)
 
 export const OrderForm: FC<OrderForm> = (props) => {
     const { order, onSubmit } = props
-
-    const today = new Date().toString()
-    const redirect = (path: string) => {
-        Router.push(path)
-    }
+    const today = new Date().toDateString()
 
     const {
         register,
@@ -130,11 +124,11 @@ export const OrderForm: FC<OrderForm> = (props) => {
         control
     } = useForm<Form>({
         defaultValues: {
-            avatar: '',
             protocol: order?.protocol,
             type: order?.type,
-            entry_date: today,
-            due_date: today
+            presentant: order?.presentant,
+            entry_date: order?.entry_date || today,
+            due_date: order?.due_date || today
         },
         resolver: resolver
     })
